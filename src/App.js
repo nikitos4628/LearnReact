@@ -62,7 +62,7 @@ class WhoAmI extends Component{
 	}
 }
 
-// React.Fragment key ='123' если нужен key(Fragment вместо <>)
+// React.Fragment key={123} если нужен key(Fragment вместо <>)
 
 // function App() {
 //   return (
