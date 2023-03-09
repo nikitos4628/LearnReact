@@ -130,7 +130,7 @@ const DynamicGreetings = (props) => {
 
 const HelloGreetings = () => {
 	return (
-		<div style={{'width': '500px', 'margin': '0 auto'}}>
+		<div style={{'width': '600px', 'margin': '0 auto'}}>
 			<DynamicGreetings color={'danger'}>
 				<h1>Hello!</h1>
 			</DynamicGreetings>
@@ -138,10 +138,47 @@ const HelloGreetings = () => {
 	)
 }
 
+const Message = (props) => {
+	return (
+		<h2>counter - {props.counter}</h2>
+	)
+}
+
+class Counter extends Component {
+	state = {
+		counter: 0
+	}
+
+	changeCounter = () => {
+		this.setState(({counter}) => ({
+			counter: counter + 1
+		}))
+	}
+
+	render() {
+		return (
+			<>
+				<button
+					className={'btn btn-primary'}
+					onClick={this.changeCounter}>
+					Click me
+				</button>
+				{this.props.render(this.state.counter)}
+				{this.props.render(this.state.counter)}
+				{this.props.render(this.state.counter)}
+			</>
+		)
+	}
+}
+
 function App() {
   return (
     <Wrapper>
 		
+		<Counter render={counter => (
+			<Message counter={counter}/>
+		)}/>
+
 		<HelloGreetings/>
 
 		<DynamicGreeting color={'danger'}>
