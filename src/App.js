@@ -1,5 +1,6 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
+import BootstrapTesting from './BootstrapTesting';
 
 import './App.css';
 
@@ -107,11 +108,54 @@ const Wrapper = styled.div`
 	margin: 80px auto 0 auto;
 `;
 
+const DynamicGreeting = (props) => {
+	return (
+		<div className={'mb-3 p-3 border border-' + props.color}>
+			{props.children}
+		</div>
+	)
+}
+
+const DynamicGreetings = (props) => {
+	return (
+		<div className={'mb-3 p-3 border border-' + props.color}>
+			{
+				React.Children.map(props.children, child => {
+					return React.cloneElement(child, {className: 'shadow p-3 m-3 border rounded'})
+				})
+			}
+		</div>
+	)
+}
+
 function App() {
   return (
     <Wrapper>
+		
+		<DynamicGreeting color={'danger'}>
+			<h1>Hi!</h1>
+			<h6>Bye!</h6>
+		</DynamicGreeting>
+
+		<BootstrapTesting
+			left = {
+				<DynamicGreetings color={'primary'}>
+					<h2>Hello</h2>
+					<h2>Goodbye</h2>
+				</DynamicGreetings>
+			}
+
+			right = {
+				<DynamicGreetings color={'warning'}>
+					<h3>Hi</h3>
+					<h3>Bye</h3>
+				</DynamicGreetings>
+			}
+		/>
+
       <WhoAmI name='John' surname='Smith' link='https://youtube.com'/>
 		<WhoAmI name='Nikita' surname='Sirius' link='https://youtube.com/youtube'/>
+		
     </Wrapper>
   );
 }
