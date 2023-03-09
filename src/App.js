@@ -128,10 +128,22 @@ const DynamicGreetings = (props) => {
 	)
 }
 
+const HelloGreetings = () => {
+	return (
+		<div style={{'width': '500px', 'margin': '0 auto'}}>
+			<DynamicGreetings color={'danger'}>
+				<h1>Hello!</h1>
+			</DynamicGreetings>
+		</div>
+	)
+}
+
 function App() {
   return (
     <Wrapper>
 		
+		<HelloGreetings/>
+
 		<DynamicGreeting color={'danger'}>
 			<h1>Hi!</h1>
 			<h6>Bye!</h6>
