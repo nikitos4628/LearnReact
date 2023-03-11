@@ -165,7 +165,6 @@ class Counter extends Component {
 				</button>
 				{this.props.render(this.state.counter)}
 				{this.props.render(this.state.counter)}
-				{this.props.render(this.state.counter)}
 			</>
 		)
 	}
